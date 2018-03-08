@@ -1,4 +1,4 @@
-package com.thoughtmechanix.licensingservice;
+package com.thoughtmechanix.licensingservice.licenses;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
