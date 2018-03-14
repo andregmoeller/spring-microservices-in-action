@@ -1,17 +1,22 @@
 package com.thoughtmechanix.licensingservice.licenses.model;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
+
+@Entity
 public class License {
-    private String id;
+    @Id
+    @SequenceGenerator(name = "license_generator", sequenceName = "license_sequence", allocationSize = 1)
+    @GeneratedValue(generator = "license_generator")
+    private Long id;
     private String organizationId;
     private String productName;
     private String licenseType;
 
-    public String getId() {
+    public Long getId() {
         return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
     }
 
     public String getOrganizationId() {
@@ -38,11 +43,6 @@ public class License {
         this.licenseType = licenseType;
     }
 
-    public License withId(String id){
-        this.setId( id );
-        return this;
-    }
-
     public License withOrganizationId(String organizationId){
         this.setOrganizationId(organizationId);
         return this;
@@ -56,5 +56,14 @@ public class License {
     public License withLicenseType(String licenseType){
         this.setLicenseType(licenseType);
         return this;
+    }
+
+    @Override
+    public String toString() {
+        return "License{" +
+                "organizationId='" + organizationId + '\'' +
+                ", productName='" + productName + '\'' +
+                ", licenseType='" + licenseType + '\'' +
+                '}';
     }
 }
