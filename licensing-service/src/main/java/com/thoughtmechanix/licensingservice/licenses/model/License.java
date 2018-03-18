@@ -1,9 +1,6 @@
 package com.thoughtmechanix.licensingservice.licenses.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.SequenceGenerator;
+import javax.persistence.*;
 
 @Entity
 public class License {
@@ -14,6 +11,8 @@ public class License {
     private String organizationId;
     private String productName;
     private String licenseType;
+    @Transient
+    private String organizationName ="";
 
     public Long getId() {
         return id;
@@ -25,6 +24,14 @@ public class License {
 
     public void setOrganizationId(String organizationId) {
         this.organizationId = organizationId;
+    }
+
+    public String getOrganizationName() {
+        return organizationName;
+    }
+
+    public void setOrganizationName(String organizationName) {
+        this.organizationName = organizationName;
     }
 
     public String getProductName() {
